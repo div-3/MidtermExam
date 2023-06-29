@@ -13,5 +13,44 @@ package Task2;
 * кактус.
 * Реализуйте программу, используя принципы ООП и библиотеки для работы с датой.*/
 
+import javax.swing.text.DateFormatter;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
+import java.util.Scanner;
+
 public class Playground {
+    public static void main(String[] args) {
+        Cactus cactus = new Cactus();
+//        cactus.setLastWaterDate(LocalDate.now().minusDays(new Random().nextInt(0, 365)));
+        HumiditySensor humiditySensor = new HumiditySensor();
+        Season season = new Season();
+        Sprinkler sprinkler = new Sprinkler();
+
+        //Получение даты последней поливки от пользователя
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Введите дату последнего полива кактуса в формате DD.MM.YYYY: ");
+        while (true){
+            String wateringDay = sc.nextLine();
+            try {
+                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+                LocalDate prevWaterDay = LocalDate.parse(wateringDay, dateFormat);
+//                System.out.println(prevWaterDay);
+                break;
+            } catch (Exception e) {
+                System.out.print("Неправильный формат даты! Введите дату заново в формате DD.MM.YYYY: ");
+            }
+        }
+
+
+
+//        System.out.println("Дата последней поливки: " + cactus.getLastWaterDate());
+
+//        System.out.println(season.getSeason());
+
+
+    }
+
+
 }
