@@ -13,13 +13,20 @@ public class Fence {
         final int SPACE_COUNT = 3;
         final int TREE_SIGN_LENGTH = 62;
         final int SPACE_LENGTH = 12;
-        final double MESSAGE_LENGTH = ( (double) SIGNS_COUNT / 3 ) * TREE_SIGN_LENGTH + SPACE_COUNT * SPACE_LENGTH;
+        final double MESSAGE_LENGTH = ((double) SIGNS_COUNT / 3) * TREE_SIGN_LENGTH + SPACE_COUNT * SPACE_LENGTH;
         System.out.println("Общая длина надписи в сантиметрах: " + MESSAGE_LENGTH);
 
         //Ввод длины забора пользователем
-        Scanner sc = new Scanner(System.in);
         System.out.print("Введите длину забора в сантиметрах: ");
-        double fenceLength = 0;
+        double fenceLength = getFenceLengthByConsole();
+
+        //Вывод результата проверки
+        System.out.println("Надпись " + ((MESSAGE_LENGTH > fenceLength) ? "не " : "") + "поместится на такой забор");
+    }
+
+    private static double getFenceLengthByConsole() {
+        Scanner sc = new Scanner(System.in);
+        double fenceLength;
         while (true) {
             try {
                 //Выбросится исключение, если введено неправильное значение (строка) или число меньше 0
@@ -31,8 +38,6 @@ public class Fence {
             }
         }
         sc.close();
-
-        //Вывод результата проверки
-        System.out.println("Надпись " + ((MESSAGE_LENGTH > fenceLength) ? "не " : "") + "поместится на такой забор");
+        return fenceLength;
     }
 }
