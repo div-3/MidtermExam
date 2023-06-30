@@ -31,13 +31,12 @@ public class Fence {
             try {
                 //Выбросится исключение, если введено неправильное значение (строка) или число меньше 0
                 if ((fenceLength = sc.nextDouble()) < 0) throw new Exception();
-                break;
+                sc.close();
+                return fenceLength;
             } catch (Exception e) {
                 System.out.print("Введена некорректная длина забора! Повторите ввод: ");
                 String tmp = sc.nextLine();     //Очистка сканера
             }
         }
-        sc.close();
-        return fenceLength;
     }
 }
