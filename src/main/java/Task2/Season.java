@@ -1,19 +1,16 @@
 package Task2;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Random;
 
 public class Season {
     private LocalDate currentDate;
 
-    public Seasons getCurrentSeason(){
-        currentDate = LocalDate.now().minusMonths(new Random().nextInt(0, 12));
-        System.out.println(currentDate.getMonth());
-        return getSeasonByDate(currentDate);
+    public Seasons getCurrentSeason() {
+        return getSeasonByDate(currentDate = LocalDate.now());
     }
 
-    public Seasons getSeasonByDate(LocalDate localDate){
+    //Вычисление сезона по дате
+    public Seasons getSeasonByDate(LocalDate localDate) {
         return switch (localDate.getMonthValue()) {
             case 1, 2, 12 -> Seasons.WINTER;
             case 3, 4, 5 -> Seasons.SPRING;
